@@ -31,17 +31,17 @@ abstract class BatchFetchIterator implements \Iterator
     /**
      * @var array|null the data retrieved in the current batch
      */
-    private $_batch;
+    private $batch;
 
     /**
      * @var mixed the value for the current iteration
      */
-    private $_value;
+    private $value;
 
     /**
      * @var string|int|null the key for the current iteration
      */
-    private $_key;
+    private $key;
 
     /**
      * @return int
@@ -122,9 +122,9 @@ abstract class BatchFetchIterator implements \Iterator
      */
     public function reset()
     {
-        $this->_batch = null;
-        $this->_value = null;
-        $this->_key = null;
+        $this->batch = null;
+        $this->value = null;
+        $this->key = null;
     }
 
     /**
@@ -143,28 +143,24 @@ abstract class BatchFetchIterator implements \Iterator
      */
     public function next()
     {
-        if (
-            null === $this->_batch
-            || !$this->each
-            || ($this->each && false === next($this->_batch))
-        ) {
-            $this->_batch = $this->fetchDataProxy();
-            reset($this->_batch);
+        if (null === $this->batch || !$this->each || ($this->each && false === next($this->batch))) {
+            $this->batch = $this->fetchDataProxy();
+            reset($this->batch);
         }
 
         if ($this->each) {
-            $this->_value = current($this->_batch);
+            $this->value = current($this->batch);
 
-            if (null !== key($this->_batch) && $this->preserveKeys) {
-                $this->_key = key($this->_batch);
-            } elseif (null !== key($this->_batch) && !$this->preserveKeys) {
-                $this->_key = ($this->_key === null ? 0 : $this->_key + 1);
+            if (null !== key($this->batch) && $this->preserveKeys) {
+                $this->key = key($this->batch);
+            } elseif (null !== key($this->batch) && !$this->preserveKeys) {
+                $this->key = ($this->key === null ? 0 : $this->key + 1);
             } else {
-                $this->_key = null;
+                $this->key = null;
             }
         } else {
-            $this->_value = $this->_batch;
-            $this->_key = $this->_key === null ? 0 : $this->_key + 1;
+            $this->value = $this->batch;
+            $this->key = $this->key === null ? 0 : $this->key + 1;
         }
     }
 
@@ -194,7 +190,7 @@ abstract class BatchFetchIterator implements \Iterator
      */
     public function key()
     {
-        return $this->_key;
+        return $this->key;
     }
 
     /**
@@ -204,7 +200,7 @@ abstract class BatchFetchIterator implements \Iterator
      */
     public function current()
     {
-        return $this->_value;
+        return $this->value;
     }
 
     /**
@@ -214,6 +210,6 @@ abstract class BatchFetchIterator implements \Iterator
      */
     public function valid()
     {
-        return !empty($this->_batch);
+        return !empty($this->batch);
     }
 }
