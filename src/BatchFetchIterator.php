@@ -175,7 +175,7 @@ abstract class BatchFetchIterator implements \Iterator
     }
 
     /**
-     * @param $page
+     * @param integer $page
      * @return array
      */
     protected function fetchData($page)
