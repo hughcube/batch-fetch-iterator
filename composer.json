@@ -1,0 +1,34 @@
+{
+    "name": "hughcube/batch-fetch-iterator",
+    "description": "url服务调用的sdk",
+    "authors": [
+        {
+            "name": "hugh.li",
+            "email": "hugh.li@foxmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0"
+    },
+    "require-dev": {
+        "hughcube/phpunit-vm": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "HughCube\\BatchFetchIterator\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "HughCube\\BatchFetchIterator\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit --verbose --coverage-clover=coverage.clover",
+        "phpstan": "phpstan analyse -vvv",
+        "check-style": "phpcs -p --standard=PSR2 src/ -v",
+        "fix-style": "phpcbf -p --standard=PSR2 src/ -v"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
