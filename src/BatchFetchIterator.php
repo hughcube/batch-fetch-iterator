@@ -143,7 +143,7 @@ abstract class BatchFetchIterator implements \Iterator
      */
     public function next()
     {
-        if (null === $this->batch || !$this->each || ($this->each && false === next($this->batch))) {
+        if (!is_array($this->batch) || false === next($this->batch)) {
             $this->batch = $this->fetchDataProxy();
             reset($this->batch);
         }
