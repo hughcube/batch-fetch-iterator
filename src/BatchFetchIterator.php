@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: hugh.li
  * Date: 2020/7/15
- * Time: 17:51
+ * Time: 17:51.
  */
 
 namespace HughCube\BatchFetchIterator;
@@ -12,19 +12,19 @@ abstract class BatchFetchIterator implements \Iterator
 {
     /**
      * @var int The page number of the data currently retrieved.
-     * Default is 1
+     *          Default is 1
      */
     protected $page = 1;
 
     /**
      * @var bool whether to return a single row during each iteration.
-     * If false, a whole batch of rows will be returned in each iteration.
+     *           If false, a whole batch of rows will be returned in each iteration.
      */
     protected $each = true;
 
     /**
      * @var bool Whether to keep the original key or not
-     * Default is false
+     *           Default is false
      */
     protected $preserveKeys = false;
 
@@ -53,6 +53,7 @@ abstract class BatchFetchIterator implements \Iterator
 
     /**
      * @param int $page
+     *
      * @return $this
      */
     public function setPage($page)
@@ -72,6 +73,7 @@ abstract class BatchFetchIterator implements \Iterator
 
     /**
      * @param bool $each
+     *
      * @return $this
      */
     public function setEach($each)
@@ -91,6 +93,7 @@ abstract class BatchFetchIterator implements \Iterator
 
     /**
      * @param bool $preserveKeys
+     *
      * @return $this
      */
     public function setPreserveKeys($preserveKeys)
@@ -166,16 +169,19 @@ abstract class BatchFetchIterator implements \Iterator
 
     /**
      * Fetches the next batch of data.
+     *
      * @return array the data fetched
      */
     protected function fetchDataProxy()
     {
         $data = $this->fetchData($this->page++);
+
         return empty($data) ? [] : $data;
     }
 
     /**
-     * @param integer $page
+     * @param int $page
+     *
      * @return array
      */
     protected function fetchData($page)
@@ -186,6 +192,7 @@ abstract class BatchFetchIterator implements \Iterator
     /**
      * Returns the index of the current dataset.
      * This method is required by the interface [[\Iterator]].
+     *
      * @return int the index of the current row.
      */
     public function key()
@@ -196,6 +203,7 @@ abstract class BatchFetchIterator implements \Iterator
     /**
      * Returns the current dataset.
      * This method is required by the interface [[\Iterator]].
+     *
      * @return mixed the current dataset.
      */
     public function current()
@@ -206,6 +214,7 @@ abstract class BatchFetchIterator implements \Iterator
     /**
      * Returns whether there is a valid dataset at the current position.
      * This method is required by the interface [[\Iterator]].
+     *
      * @return bool whether there is a valid dataset at the current position.
      */
     public function valid()
