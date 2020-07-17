@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: hugh.li
  * Date: 2020/7/15
- * Time: 17:51
+ * Time: 17:51.
  */
 
 namespace HughCube\BatchFetchIterator;
@@ -25,6 +25,7 @@ class CallableBatchFetchIterator extends BatchFetchIterator
 
     /**
      * @param callable $fetchCallable
+     *
      * @return $this
      */
     public function setFetchCallable($fetchCallable)
@@ -35,7 +36,7 @@ class CallableBatchFetchIterator extends BatchFetchIterator
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     protected function fetchData($page)
     {

@@ -19,6 +19,7 @@ class CallableBatchFetchIteratorTest extends TestCase
         $iterator->setFetchCallable(
             function () use (&$items, &$callCount) {
                 $callCount++;
+
                 return array_pop($items);
             }
         );
@@ -41,6 +42,7 @@ class CallableBatchFetchIteratorTest extends TestCase
         $iterator->setPreserveKeys(true)->setFetchCallable(
             function () use (&$items, &$callCount) {
                 $callCount++;
+
                 return array_pop($items);
             }
         );
